@@ -48,3 +48,5 @@ const myfunction = function(){
 console.log(typeof bigNumber)
 console.log(typeof outsideTemp)
 console.log(typeof myfunction , myfunction)
+
+
