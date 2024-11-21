@@ -19,3 +19,8 @@ console.log(a);//1
 //Terenary operator
 // condition? true : false;
 
+let arr = [1, null, undefined, 4];
+
+// Replace nullish values with 0
+let processedArr = arr.map(item => item ?? 0);
+console.log(processedArr); // Output: [1, 0, 0, 4]
