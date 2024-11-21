@@ -21,3 +21,12 @@ if(Object.keys(user).length==0)
 if(0==false && false=="" && 0=="")
     console.log(true);
     
+//he || operator considers all falsy values (null, undefined, 0, false, "") t
+// o fall back to the second operand.In contrast, ?? only considers null or undefined.
+let count = 0;
+
+// Using ||
+console.log(count || 10); // Output: 10 (because 0 is falsy)
+
+// Using ??
+console.log(count ?? 10);
