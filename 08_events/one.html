@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+</head>
+<body style = "background-color: #414141; color:aqua">
+    <h2>Image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photo1" src= "https://images.pexels.com/photos/30906509/pexels-photo-30906509/free-photo-of-majestic-snow-covered-mountains-in-banff-canada.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="photo1"></li>
+                <!-- onclick="alert('Mountain')"></li> -->
+            <li><img width="200px" id="photo2" src= "https://images.pexels.com/photos/31097391/pexels-photo-31097391/free-photo-of-springtime-in-villefranche-sur-saone-france.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="photo2"></li>
+
+        </ul>
+    </div>    
+</body>
+<script>
+    //events run in js in a sequentially 
+    //events are activities happening in browser
+    //better approach
+    // document.getElementById('photo1').onclick = function(){
+    //     alert("Mountain")
+    // }
+
+    //attachevent()
+    //jQuery - on
+
+    //type, timestamp, defaultPrevented
+    //target, toElement, srcElement, currentTarget
+    //clientX, clientY, screenX, screenY
+    //altkey, ctrlkey, shiftkey, keyCode
+
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log("ul clicked")
+        alert('ul');
+    }, false);    
+    
+    document.getElementById('photo1').addEventListener('click', function(e){
+        console.log("p2 clicked")
+        e.stopPropagation()
+        alert('Mountain');
+    }, false);    
+
+    // false -> event bubling(default)
+    // true -> event captujring
+
+    // bubbbling -> event propogation tracking larger elements from inner to outwards
+
+    //capturing -> event propogation tracking smaller elements from outwards to  innwards
+
+    // e.stopPropagation() ->stops furthe propogation
+</script>
+</html>
