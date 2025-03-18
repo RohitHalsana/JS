@@ -13,10 +13,13 @@
                 <!-- onclick="alert('Mountain')"></li> -->
             <li><img width="200px" id="photo2" src= "https://images.pexels.com/photos/31097391/pexels-photo-31097391/free-photo-of-springtime-in-villefranche-sur-saone-france.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="photo2"></li>
 
+            <li id="Yt"><a href="https://www.youtube.com/">Youtube</a></li>
+
         </ul>
     </div>    
 </body>
 <script>
+    //events are evoked on activities in browser
     //events run in js in a sequentially 
     //events are activities happening in browser
     //better approach
@@ -32,24 +35,49 @@
     //clientX, clientY, screenX, screenY
     //altkey, ctrlkey, shiftkey, keyCode
 
-    document.getElementById('images').addEventListener('click', function(e){
-        console.log("ul clicked")
-        alert('ul');
-    }, false);    
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("ul clicked")
+    //     alert('ul');
+    // }, false);    
     
-    document.getElementById('photo1').addEventListener('click', function(e){
-        console.log("p2 clicked")
-        e.stopPropagation()
-        alert('Mountain');
-    }, false);    
+    // document.getElementById('photo1').addEventListener('click', function(e){
+    //     console.log("p2 clicked")
+    //     e.stopPropagation()
+    //     alert('Mountain');
+    // }, false);    
+
+    // document.getElementById('Yt').addEventListener('click',function(e){
+    //     console.log('clicked')
+    //     e.stopPropagation();
+    //     e.preventDefault();
+    // })
 
     // false -> event bubling(default)
     // true -> event captujring
 
     // bubbbling -> event propogation tracking larger elements from inner to outwards
-
     //capturing -> event propogation tracking smaller elements from outwards to  innwards
-
     // e.stopPropagation() ->stops furthe propogation
+
+    document.querySelector('#images').addEventListener('click',function(e){
+        // console.log(e);
+        // console.log(e.target);
+        // console.log(e.target.parentNode)
+        // let removeIt = e.target.parentNode
+        // removeIt.remove()
+        // removeIt.parentNode.removeChild(removeIt)
+        //if clicked on li ul is removed
+        console.log(e.target.tagName);
+        if(e.target.tagName === 'IMG' ){
+            // console.log(e.target.tagName);
+            console.log(e.target.id);
+            
+            let removeIt = e.target.parentNode
+            removeIt.remove()            
+        }
+
+},false)
+
+
 </script>
 </html>
