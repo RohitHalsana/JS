@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<body style="background-color: #212121;">
+    <div class="container">
+    </div>
+    <!-- # <img src="readyState.png" alt="readyState" style="width:800px"> -->
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/rohithalsana'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    let data
+    let followers
+    let following
+    let photo
+    let bio
+    let avatar
+    xhr.onreadystatechange =  function(){
+        console.log(xhr.readyState)
+        if(xhr.readyState === 4 && xhr.status === 200){
+
+            data = JSON.parse(this.responseText);  
+            // console.log()
+            avatar =  data.avatar_url
+            // console.log(avatar)             
+            bio = data.bio     
+            // console.log(bio)       
+            followers=data.followers
+            following=data.following
+            
+            const container = document.querySelector('.container')
+
+            const img = document.createElement('img')
+            img.src = avatar
+            img.alt ="User Avatar"
+            img.style.width ="150px"
+            container.appendChild(img) 
+
+            const foll = document.createElement('p')
+            foll.innerHTML = `<strong>Followers:</strong> ${followers}`;
+            foll.style.color="lightgreen"
+            container.appendChild(foll)
+
+            const folli = document.createElement('p')
+            folli.innerHTML = `<strong>Following:</strong> ${following}`;
+            folli.style.color="lightgreen"
+            container.appendChild(folli)
+
+            const bioElement = document.createElement('h3')
+            bioElement.innerHTML = `<strong>Bio:</strong> ${bio}`;
+            bioElement.style.color = "lightblue";
+            bioElement.style.padding = "10px";
+            bioElement.style.width = "250px";
+            bioElement.style.border = "1px solid lightblue";
+            bioElement.style.borderRadius = "8px";
+            container.appendChild(bioElement);
+            container.style.display = "flex";
+            container.style.flexDirection = "row";
+            container.style.alignItems = "center";
+            container.style.gap = "20px"; // Adds space between elements
+        }
+        else    
+            console.log("Error",xhr.status);            
+    }
+    xhr.send()    
+</script>
+</html>

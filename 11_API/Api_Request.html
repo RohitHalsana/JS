@@ -5,7 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Request</title>
 </head>
-<body>
-    
+<body style="background-color: #212121;">
+    <img src="readyState.png" alt="readyState" style="width:800px">
 </body>
+<script>
+    const requestUrl = 'https://api.github.com/users/rohithalsana'
+    const xhr = new XMLHttpRequest();
+    // console.log(xhr.readyState)
+    xhr.open('GET', requestUrl);// it has to be called
+    // console.log(xhr.readyState)
+    xhr.onreadystatechange =  function(){
+        console.log(xhr.readyState)
+        if(xhr.readyState === 4){
+            let data = this.responseText;
+            console.log(data)
+            console.log(typeof data)
+            data = JSON.parse(this.responseText);
+            console.log(typeof data)
+            console.log(data.followers)
+            console.log(data.following)
+
+        }
+    }
+    // console.log(xhr.readyState)
+    xhr.send()
+</script>
 </html>
